@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         self.username.setFont(font)
         self.username.setText("")
         self.username.setAlignment(QtCore.Qt.AlignCenter)
-        self.username.setObjectName("username")
+        self.username.setObjectName("Имя")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.username)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
@@ -93,7 +93,7 @@ class Ui_MainWindow(object):
         self.password.setText("")
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.password.setAlignment(QtCore.Qt.AlignCenter)
-        self.password.setObjectName("password")
+        self.password.setObjectName("Пароль")
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.password)
         self.verticalLayout.addLayout(self.formLayout)
         self.logIn = QtWidgets.QPushButton(self.centralwidget)
@@ -146,19 +146,19 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_5.setText(_translate("MainWindow", "Welcome to Password Manager"))
-        self.label_6.setText(_translate("MainWindow", "Go Ahead and Forget Your Passwords!!"))
-        self.label_3.setText(_translate("MainWindow", "Log-In"))
-        self.label.setText(_translate("MainWindow", "Username"))
-        self.label_2.setText(_translate("MainWindow", "Password"))
-        self.logIn.setText(_translate("MainWindow", "Log In"))
-        self.label_4.setText(_translate("MainWindow", "Don\'t have an account? Sign Up"))
-        self.signUp.setText(_translate("MainWindow", "Sign Up"))
+        self.label_5.setText(_translate("MainWindow", "Добро пожаловать в Менеджер Паролей"))
+        self.label_6.setText(_translate("MainWindow", "Идите вперед и забудьте свои пароли!XD!"))
+        self.label_3.setText(_translate("MainWindow", "Вход"))
+        self.label.setText(_translate("MainWindow", "Имя"))
+        self.label_2.setText(_translate("MainWindow", "Пароль"))
+        self.logIn.setText(_translate("MainWindow", "Логин"))
+        self.label_4.setText(_translate("MainWindow", "Нет аккаунта иди на кнопку ниже"))
+        self.signUp.setText(_translate("MainWindow", "Зарегаться"))
 
     def warn(self,msg):
         Dialog=QtWidgets.QMessageBox()
         Dialog.setText(msg)
-        Dialog.setWindowTitle("Password Manager")
+        Dialog.setWindowTitle("Менеджер Паролей")
         Dialog.exec()
 
     def signUpPopUp(self):
@@ -171,9 +171,9 @@ class Ui_MainWindow(object):
     def logInPopUp(self):
         if (self.username.text() != '' and self.password.text() != ''):
             if (not (self.validateUsername())):
-                self.warn("Invalid Username")
+                self.warn("Имя - Инвалид")
             elif (not (self.validatePassword())):
-                self.warn("Invalid Password. Please try again")
+                self.warn("Пароль - инвалид. Повтори попытку")
             else:
                 cursor.execute("INSERT INTO LogInHistory VALUES('"+self.username.text()+"');")
                 connection.commit()
@@ -183,10 +183,10 @@ class Ui_MainWindow(object):
                 ui.setupUi(Dialog)
                 ret = Dialog.exec()
         else:
-            self.warn("Please Enter Username and Password")
+            self.warn("Пж Введите Имя и Пароль")
 
     def validateUsername(self):
-        cursor.execute("SELECT Username FROM Users")
+        cursor.execute("ВЫБЕРИТЕ имя пользователя ИЗ пользователей")
         usernames = cursor.fetchall()
         username = self.username.text()
         for i in range(len(usernames)):

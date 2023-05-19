@@ -110,12 +110,12 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Username"))
-        self.label_4.setText(_translate("Dialog", "Confirm Password"))
-        self.label_2.setText(_translate("Dialog", "Set Password"))
-        self.label_3.setText(_translate("Dialog", "Sign Up"))
-        self.signUp.setText(_translate("Dialog", "Sign Up"))
+        Dialog.setWindowTitle(_translate("Dialog", "Диалог"))
+        self.label.setText(_translate("Dialog", "Имя"))
+        self.label_4.setText(_translate("Dialog", "Подтвердите Пароль"))
+        self.label_2.setText(_translate("Dialog", "Выберите Пароль"))
+        self.label_3.setText(_translate("Dialog", "Регистрация"))
+        self.signUp.setText(_translate("Dialog", "Зарегаться"))
 
     def warn(self,msg):
         Dialog=QtWidgets.QMessageBox()
@@ -126,13 +126,13 @@ class Ui_Dialog(object):
     def getInfo(self):
         if (self.username.text() != '' and self.setPassword.text() != '' and self.confirmPassword.text() != ''):
             if (self.setPassword.text() != self.confirmPassword.text()):
-                self.warn("Passwords Don't Match. Please try again.")
+                self.warn("Пароли не совпадают. Пожалуйста, попробуйте еще раз.")
                 self.setPassword.setText("")
                 self.confirmPassword.setText("")
             else :
                 username = self.username.text()
                 if (not (self.validateUsername(username))):
-                    self.warn("There exists an account having same username. Cannot sign up")
+                    self.warn("Существует учетная запись с таким же именем пользователя. Не могу зарегистрироваться")
                 else:   
                     """password = self.setPassword.text()
                     cursor.execute("INSERT INTO Users VALUES(?,?);", (username, password))
@@ -157,7 +157,7 @@ class Ui_Dialog(object):
                     connection.commit()
                     self.warn("Sign-Up Done Successfully. Log into your account now")
         else:
-            self.warn("Please Enter Username and Password")
+            self.warn("Пожалуйста Введите Пароль и Имя")
     
     def validateUsername(self, username):
         cursor.execute("SELECT Username FROM Users")
